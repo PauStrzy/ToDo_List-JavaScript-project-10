@@ -12,6 +12,8 @@ let $popupInput //tekst wpisywany w inputa w popup'ie
 let $addPopupBtn // przycisk "zatwierdź" w popup'ie
 let $closeTodoBtn //przycisk od zamykania popup'a
 
+const toolsTemp = document.querySelector('.tools-temp')
+
 const main = () => {
 	prepareDOMElements()
 	prepareDOMEvents()
@@ -60,17 +62,24 @@ const enterCheck = e => {
 }
 
 const createToolsArea = () => {
-	const toolsPanel = document.createElement('div')
-	toolsPanel.classList.add('tools')
-	toolsPanel.innerHTML = `
-    <div class="tools">
-    <button class="complete"><i class="fas fa-check"></i></button>
-    <button class="edit">EDIT</button>
-    <button class="delete"><i class="fas fa-times"></i></button>
-</div>
-    `
+	// Rozwiązanie z TEMPLATE
+
+	const toolsPanel = toolsTemp.content.cloneNode(true)
 	$newTask.appendChild(toolsPanel)
 
+	// Pierwsze rozwiązanie
+	// 	const toolsPanel = document.createElement('div')
+	// 	toolsPanel.classList.add('tools')
+	// 	toolsPanel.innerHTML = `
+	//     <div class="tools">
+	//     <button class="complete"><i class="fas fa-check"></i></button>
+	//     <button class="edit">EDIT</button>
+	//     <button class="delete"><i class="fas fa-times"></i></button>
+	// </div>
+	//     `
+	// 	$newTask.appendChild(toolsPanel)
+
+	// Drugie rozwiązanie
 	// const completeBtn = document.createElement('button')
 	// completeBtn.classList.add('complete')
 	// completeBtn.innerHTML = '<i class="fas fa-check"></i>'
